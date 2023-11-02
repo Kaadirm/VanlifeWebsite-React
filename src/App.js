@@ -10,16 +10,16 @@ function App() {
       <BrowserRouter>
         <div className="container">
           <nav className="header">
-            <Link to="/">#VANLIFE</Link>
+            <Link to="/VanlifeWebsite-React">#VANLIFE</Link>
             <div className="link-div">
-              <Link to="/About">About</Link>
-              <Link to="/Vans">Vans</Link>
+              <Link to="/VanlifeWebsite-React/About">About</Link>
+              <Link to="/VanlifeWebsite-React/Vans">Vans</Link>
             </div>
           </nav>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Vans" element={<Vans />} />
+            <Route path="/VanlifeWebsite-React" element={<Home />} />
+            <Route path="/VanlifeWebsite-React/About" element={<About />} />
+            <Route path="/VanlifeWebsite-React/Vans" element={<Vans />} />
           </Routes>
         </div>
         <footer className="footer">
@@ -30,18 +30,7 @@ function App() {
   );
 }
 
+//I did had to make link and route start with /VanlifeWebsite-React
+//Cause when I deploy my homePage is my Repo name
+
 export default App;
-
-// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-// <BrowserRouter>
-//         <nav>
-//           <Link to="/">Home</Link>
-//           <Link to="/about">About</Link>
-//         </nav>
-
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/about" element={<About />} />
-//         </Routes>
-//       </BrowserRouter>
