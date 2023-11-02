@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/VanlifeWebsite-React/static/css/main.e609411f.css",
-    "main.js": "/VanlifeWebsite-React/static/js/main.3474a13f.js",
+    "main.css": "/VanlifeWebsite-React/static/css/main.525b03a6.css",
+    "main.js": "/VanlifeWebsite-React/static/js/main.9363c019.js",
+    "static/media/van.jpg": "/VanlifeWebsite-React/static/media/van.4b077f5db8aa39bcd3bd.jpg",
     "index.html": "/VanlifeWebsite-React/index.html",
-    "main.e609411f.css.map": "/VanlifeWebsite-React/static/css/main.e609411f.css.map",
-    "main.3474a13f.js.map": "/VanlifeWebsite-React/static/js/main.3474a13f.js.map"
+    "main.525b03a6.css.map": "/VanlifeWebsite-React/static/css/main.525b03a6.css.map",
+    "main.9363c019.js.map": "/VanlifeWebsite-React/static/js/main.9363c019.js.map"
   },
   "entrypoints": [
-    "static/css/main.e609411f.css",
-    "static/js/main.3474a13f.js"
+    "static/css/main.525b03a6.css",
+    "static/js/main.9363c019.js"
   ]
 }
