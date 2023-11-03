@@ -4,6 +4,8 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Vans from "./Components/Vans";
 
+import "./server";
+
 function App() {
   return (
     <>

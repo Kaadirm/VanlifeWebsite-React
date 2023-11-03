@@ -52,7 +52,6 @@ nav>a {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 
@@ -90,23 +89,15 @@ nav>a {
   padding: calc(0.4rem + 0.5vw) 0;
   font-size: calc(0.4rem + 0.75vw);
   font-weight: 700;
+  cursor: pointer;
 }
 
-/* @media screen and (max-width: 500px) {
-  .container {
-    min-height: fit-content;
-  }
-
-  .homePage-container {
-    min-height: fit-content;
-  }
-} */
 
 /* CSS for About Page Content */
 
 .aboutPage-container {
   box-sizing: border-box;
-  padding: 0 5vw;
+  padding: 0 2%;
   min-height: 80vh;
   background-color: rgb(254, 244, 234);
 }
@@ -170,7 +161,8 @@ nav>a {
 
 .aboutPage-btn {
   margin-top: 1vw;
-  font-size: calc(0.3rem + 0.3.5vw);
+  font-size: calc(0.3rem + 0.35vw);
+  font-weight: 700;
   background-color: rgb(14, 18, 20);
   color: rgb(212, 209, 213);
   padding: calc(0.35rem + 0.4vw);
@@ -190,5 +182,135 @@ nav>a {
 
   .aboutPage-btn-div {
     margin-top: calc(2.5rem + 1.4vw);
+  }
+}
+
+
+/* CSS for Van Page Content */
+
+.vansPage-container {
+  padding: 0 2% 2% 2%;
+  min-height: 80vh;
+  background-color: rgb(254, 244, 234);
+}
+
+.vansPage-header-div {
+  padding-top: calc(0.5rem + 0.5vw);
+  padding-bottom: calc(0.5rem + 0.5vw)
+}
+
+.vansPage-header {
+  margin: 0;
+  font-size: calc(0.5rem + 1.3vw);
+  font-weight: 600;
+}
+
+.vansPage-btn-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(3rem + 35%);
+  padding-bottom: calc(0.5rem + 1vw);
+  font-size: calc(0.4rem + 1.15vw);
+}
+
+.vansPage-btn {
+  padding: calc(0.25rem + 0.3vw) calc(0.75rem + 1.25vw);
+  border-radius: 5px;
+  border: none;
+  background-color: #FFEAD0;
+  color: #4D4D4D;
+  cursor: pointer;
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.vansPage-btn-active {
+  color: rgb(192, 193, 194);
+}
+
+.vansPage-btn:hover,
+.vansPage-clear:hover {
+  font-size: calc(0.6rem + 0.8vw);
+  transition: font-size 0.3s ease-in-out;
+}
+
+.vansPage-clear {
+  text-decoration: underline;
+  color: #4D4D4D;
+  cursor: pointer;
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.vansPage-van-grids {
+  display: grid;
+  grid-template-columns: repeat(3, 30vw);
+  gap: calc(0.4rem + 2vw);
+}
+
+.vansPage-img {
+  width: 30vw;
+  border-radius: 10px;
+}
+
+.vansPage-namePrice-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.vansPage-dayBtn-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: calc(0.5rem + 3vw);
+}
+
+.vansPage-item-btn {
+  align-self: end;
+  padding: calc(0.25rem + 0.3vw) calc(0.5rem + 0.75vw);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: calc(0.3rem + 0.75vw);
+  color: white;
+  text-transform: capitalize;
+}
+
+.vansPage-item-day {
+  font-weight: 500;
+  font-size: calc(0.1rem + 0.60vw);
+}
+
+@media screen and (max-width: 768px) {
+  .vansPage-btn-div {
+    width: 100%;
+  }
+
+  .vansPage-van-grids {
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(0.4rem + 0.75vw);
+  }
+
+  .vansPage-img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .vansPage-van-grids {
+    grid-template-columns: repeat(1, 1fr);
+    gap: calc(0.4rem + 0.75vw);
+  }
+
+  .vansPage-dayBtn-div {
+    height: calc(1rem + 3vw);
+  }
+
+  .vansPage-container {
+    padding: 2% 4% 4% 4%;
+    min-height: 80vh;
+    background-color: rgb(254, 244, 234);
   }
 }
