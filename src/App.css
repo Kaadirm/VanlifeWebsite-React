@@ -9,12 +9,31 @@ body {
 
 .container {
   min-height: 90vh;
+  background-color: rgb(254, 244, 234);
 }
 
-nav>a {
+a {
   color: black;
   text-decoration: none;
 }
+
+a.active-link {
+  text-decoration: underline;
+  font-weight: 700
+}
+
+.gray-link {
+  color: gray;
+  font-weight: 500;
+}
+
+.header>a:hover,
+.link-div>a:hover {
+  text-decoration: underline;
+}
+
+
+
 
 .header {
   background-color: rgb(254, 244, 234);
@@ -31,15 +50,12 @@ nav>a {
 }
 
 .link-div {
-  width: calc(5rem + 4vw);
+  width: calc(5rem + 10vw);
   display: flex;
   justify-content: space-between;
 }
 
 .link-div>a {
-  color: black;
-  text-decoration: none;
-  font-weight: 600;
   font-size: calc(0.65rem + 0.75vw);
 }
 
@@ -135,12 +151,13 @@ nav>a {
 
 
 .aboutPage-header {
-  font-size: calc(0.5rem + 1.3vw);
+  font-size: calc(0.6rem + 1.3vw);
   margin: 0;
 }
 
 .aboutPage-context {
-  font-size: calc(0.4rem + 0.6vw);
+  font-size: calc(0.5rem + 0.6vw);
+  line-height: calc(0.5rem + 0.6vw);
 }
 
 .aboutPage-btn-div {
@@ -155,7 +172,7 @@ nav>a {
 }
 
 .aboutPage-btn-header {
-  font-size: calc(0.4rem + 0.6vw);
+  font-size: calc(0.5rem + 0.6vw);
   margin: 0;
 }
 
@@ -224,10 +241,6 @@ nav>a {
   font-size: calc(0.4rem + 0.75vw);
 }
 
-.vansPage-btn-active {
-  color: rgb(192, 193, 194);
-}
-
 .vansPage-btn:hover,
 .vansPage-clear:hover {
   font-size: calc(0.6rem + 0.8vw);
@@ -245,6 +258,10 @@ nav>a {
   display: grid;
   grid-template-columns: repeat(3, 30vw);
   gap: calc(0.4rem + 2vw);
+}
+
+.vansPage-van-grid {
+  cursor: pointer;
 }
 
 .vansPage-img {
@@ -272,15 +289,15 @@ nav>a {
   padding: calc(0.25rem + 0.3vw) calc(0.5rem + 0.75vw);
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   font-size: calc(0.3rem + 0.75vw);
   color: white;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .vansPage-item-day {
   font-weight: 500;
-  font-size: calc(0.1rem + 0.60vw);
+  font-size: calc(0.25rem + 0.65vw);
 }
 
 @media screen and (max-width: 768px) {
@@ -313,4 +330,254 @@ nav>a {
     min-height: 80vh;
     background-color: rgb(254, 244, 234);
   }
+}
+
+
+/* CSS for Vans Detail Page Content */
+
+.detailPage-container {
+  padding: 0 2% 2% 2%;
+  min-height: 80vh;
+  background-color: rgb(254, 244, 234);
+}
+
+.detailPage-header {
+  margin: 0;
+  font-size: calc(0.5rem + 0.7vw);
+  font-weight: 600;
+  padding-top: calc(0.5rem + 0.5vw);
+  padding-bottom: calc(0.5rem + 0.8vw);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.detailPage-img {
+  width: 22vw;
+  aspect-ratio: 1.25 / 1;
+  border-radius: 10px;
+  padding-bottom: calc(0.5rem + 0.8vw);
+}
+
+.detailPage-btn {
+  font-weight: 500;
+  color: white;
+  padding: calc(0.25rem + 0.3vw) calc(0.5rem + 0.75vw);
+  border: none;
+  border-radius: 5px;
+  font-size: calc(0.5rem + 0.75vw);
+  color: white;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+}
+
+.detailPage-price {
+  font-weight: 800;
+  font-size: calc(0.7rem + 0.70vw);
+}
+
+.detailPage-day {
+  font-weight: normal;
+  font-size: calc(0.5rem + 0.60vw);
+}
+
+.detailPage-description {
+  font-size: calc(0.5rem + 0.60vw);
+}
+
+.detailPage-rent-btn {
+  width: 22vw;
+  background-color: rgb(235, 119, 48);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: calc(0.5rem + 0.75vw);
+  padding: calc(0.5rem + 0.5vw) calc(0.5rem + 0.75vw);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1440px) {
+  .detailPage-img {
+    width: 50%;
+  }
+
+  .detailPage-rent-btn {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .detailPage-img {
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .detailPage-rent-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .detailPage-img {
+    aspect-ratio: 1.25 / 1;
+  }
+}
+
+
+/* CSS for Host Page Content */
+
+.hostPage-container {
+  min-height: 80vh;
+  padding-top: 2%;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostPage-nav {
+  display: flex;
+  width: calc(12.5rem + 18vw);
+  justify-content: space-between;
+  padding: 0.5% 2%;
+}
+
+.hostPage-nav>a:hover {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.hostPage-nav-div {
+  width: 100%;
+}
+
+/* CSS for HostVans Content */
+
+.hostVans-header {
+  margin: 0;
+  padding: 0 0 2% 0;
+}
+
+.hostVans-container {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostVans-van-block {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  padding: 2% 0 2% 2%;
+  align-items: center;
+  gap: calc(1.5rem + 1.5vw);
+}
+
+.hostVans-img {
+  width: calc(7rem + 7vw);
+  border-radius: 10px;
+}
+
+.hostVans-name {
+  margin: 0;
+  font-size: calc(0.3rem + 1.5vw);
+}
+
+.hostVans-price {
+  font-size: calc(0.3rem + 1.5vw);
+  margin: 0;
+}
+
+
+/* CSS for HostVansDetail Content */
+
+.hostVansDetail-container {
+  padding: 2%;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostVansDetail-frame {
+  width: 100%;
+  padding: 2.5%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1rem + 1vw);
+}
+
+.hostVansDetail-van-block {
+  display: flex;
+  gap: calc(1rem + 1vw);
+  align-items: center;
+}
+
+.hostVansDetail-img {
+  width: calc(6rem + 6vw);
+}
+
+.hostVansDetail-header {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25rem + 0.5vw);
+}
+
+.hostVansDetail-header>* {
+  margin: 0;
+}
+
+.hostVansDetail-btn {
+  padding: calc(0.25rem + 0.3vw) calc(0.5rem + 1.25vw);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+  text-transform: capitalize;
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.hostVansDetail-name {
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.hostVansDetail-price {
+  font-size: calc(0.4rem + 0.75vw);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.hostVansDetail-nav {
+  width: calc(9rem + 9vw);
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(0.5rem + 0.80vw);
+}
+
+/* HostVansInfo*/
+
+.hostVans-info {
+  display: flex;
+  flex-direction: column;
+  font-size: calc(0.4rem + 0.75vw);
+  gap: calc(1rem + 1vw)
+}
+
+/* HostVansPricing */
+
+.hostVansPricing {
+  font-size: calc(0.5rem + 1vw);
+  font-weight: 600;
+}
+
+/* HostVansPhoto */
+
+.hostVansPhoto-div {
+  display: flex;
+  gap: calc(1rem + 1vw);
+}
+
+.hostVansPhoto-img {
+  width: calc(6rem + 15vw);
 }

@@ -1,38 +1,47 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./Components/Home";
-import About from "./Components/About";
-import Vans from "./Components/Vans";
-
 import "./server";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Components/Layout";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Vans from "./Pages/Vans/Vans";
+import VansDetail from "./Pages/Vans/VansDetail";
+import HostLayout from "./Components/HostLayout";
+import Dashboard from "./Pages/Host/Dashboard";
+import Income from "./Pages/Host/Income";
+import HostVans from "./Pages/Host/HostVans";
+import Reviews from "./Pages/Host/Reviews";
+import HostVansDetails from "./Pages/Host/HostVansDetails";
+import HostVansInfo from "./Pages/Host/HostVansInfo";
+import HostVansPricing from "./Pages/Host/HostVansPricing";
+import HostVansPhoto from "./Pages/Host/HostVansPhoto";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <div className="container">
-          <nav className="header">
-            <Link to="/VanlifeWebsite-React">#VANLIFE</Link>
-            <div className="link-div">
-              <Link to="/VanlifeWebsite-React/About">About</Link>
-              <Link to="/VanlifeWebsite-React/Vans">Vans</Link>
-            </div>
-          </nav>
-          <Routes>
-            <Route path="/VanlifeWebsite-React" element={<Home />} />
-            <Route path="/VanlifeWebsite-React/About" element={<About />} />
-            <Route path="/VanlifeWebsite-React/Vans" element={<Vans />} />
-          </Routes>
-        </div>
-        <footer className="footer">
-          <p>&#169;2002 #VANLIFE</p>
-        </footer>
-      </BrowserRouter>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="vans" element={<Vans />} />
+            <Route path="vans/:id" element={<VansDetail />} />
+            <Route path="host" element={<HostLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="vans" element={<HostVans />} />
+              <Route path="vans/:id" element={<HostVansDetails />}>
+                <Route index element={<HostVansInfo />} />
+                <Route path="pricing" element={<HostVansPricing />} />
+                <Route path="photos" element={<HostVansPhoto />} />
+              </Route>
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Route>
+        </Routes>
+      </HashRouter>
     </>
   );
 }
-
-//I did had to make link and route start with /VanlifeWebsite-React
-//Cause when I deploy my homePage is my Repo name
 
 export default App;

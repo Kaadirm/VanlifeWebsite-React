@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 function Vans() {
 
@@ -109,19 +110,21 @@ function Vans() {
       {/* Vans part where data goes in grids */}
       
       <div className='vansPage-van-grids'>{filterVans.map(item => 
-        <div>
-          <div><img className='vansPage-img' src={item.imageUrl} alt={item.name} /></div>
-          <div className='vansPage-namePrice-div'>
-            <div className='vansPage-item-name'>{item.name}</div>
-            <div className='vansPage-item-price'>${item.price}</div>
+        <Link to={`${item.id}`}>
+          <div className='vansPage-van-grid'>
+            <div><img className='vansPage-img' src={item.imageUrl} alt={item.name} /></div>
+            <div className='vansPage-namePrice-div'>
+              <div className='vansPage-item-name'>{item.name}</div>
+              <div className='vansPage-item-price'>${item.price}</div>
+            </div>
+            <div className='vansPage-dayBtn-div'>
+              {/* I put styling(backgroundColor) with an object according to item's type */}
+              <button style={{backgroundColor: btnBackgroundColor[item.type]}} 
+              className='vansPage-item-btn'>{item.type}</button>
+              <div className='vansPage-item-day'>/day</div>
+            </div>
           </div>
-          <div className='vansPage-dayBtn-div'>
-            {/* I put styling(backgroundColor) with an object according to item's type */}
-            <button style={{backgroundColor: btnBackgroundColor[item.type]}} 
-            className='vansPage-item-btn'>{item.type}</button>
-            <div className='vansPage-item-day'>/day</div>
-          </div>
-        </div>)}
+        </Link>)}
       </div>
     </div>
     </>
