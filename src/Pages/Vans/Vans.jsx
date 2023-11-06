@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 function Vans() {
-
                 //Variables
   //Base data
   const [vans, setVans] = useState([])
   //Data for filtering
   const [filterVans, setFilterVans] = useState([])
-
+  //SearchParam data for filtering and refreshing page
+  const [searchParams, setSearchParams] = useSearchParams()
+  //Filtering object to decide 
+  const [filterCheckObj, setFilterCheckObj] = useState({})
 
   const filterBtnColor = {
     "color1": "rgb(192, 193, 194)"
@@ -21,12 +24,28 @@ function Vans() {
     "luxury": "#161616"
   }
 
-  //Filtering object to decide 
-  const [filterCheckObj, setFilterCheckObj] = useState({
-    "simple": false,
-    "luxury": false,
-    "rugged": false
-  }) 
+  //Function for altering searchParameter values
+  const handleSearchParams = (e) => {
+    const {id} = e.target
+    if(searchParams.has("type", id)){
+      searchParams.delete("type", id)
+      setSearchParams(searchParams)
+    }
+    else{
+      searchParams.append("type", id)
+      setSearchParams(searchParams)
+    }
+  }
+  
+  //Connection between searchParam and FilterCheckObj by using useEffect
+  useEffect(() => {
+    setFilterCheckObj({
+      "simple": searchParams.has("type", "simple"),
+      "luxury": searchParams.has("type", "luxury"),
+      "rugged": searchParams.has("type", "rugged")
+    });
+  }, [searchParams])
+
 
   //Data fetching from Mock API (Mirage JS)
   useEffect(() => {
@@ -35,33 +54,17 @@ function Vans() {
     .then(json => setVans(json.vans))
   },[])
 
-  //Filter function to change object
-  const handleFilter = (e) => {
-    const {id} = e.target
-    setFilterCheckObj(preVal => ({
-      ...preVal,
-      [id]: !preVal[id]
-    })) 
-  }
 
   //            Clearing function to reset 
-  // I could use simply base object to clear, 
-  // but if we want to add more filter we should do it by loop
   const handleClear = () => {
-    // setFilterCheckObj(preVal => ({
-    //   "simple": false,
-    //   "luxury": false,
-    //   "rugged": false
-    // }))
-    setFilterCheckObj(preVal => {
-      const newFilterCheckObj = { ...preVal };
-      for (const key in newFilterCheckObj) {
-      newFilterCheckObj[key] = false;
-      }
-      return newFilterCheckObj;
-      })
+    if(searchParams.size === 0) {
+      return
+    }
+    setSearchParams({})
   }
-  
+
+  // setting filterVans for JSX part below
+
   useEffect(() => {
     setFilterVans(vans)
     if(Object.values(filterCheckObj).every(item => item === false)){
@@ -72,6 +75,7 @@ function Vans() {
     }
   }, [vans, filterCheckObj])
 
+  console.count("hel")
 
   return (
     <>
@@ -84,24 +88,24 @@ function Vans() {
       {/* Filter buttons for making search easier */}
 
       <div className='vansPage-btn-div'>
-        
+
         <button className='vansPage-btn' id='simple'
         style={filterCheckObj.simple ? {color: filterBtnColor.color1, 
         padding: "calc(0.25rem + 0.15vw) calc(0.75rem + 0.75vw)"} 
         : {color: "#4D4D4D"}}
-        onClick={handleFilter}>Simple</button>
+        onClick={handleSearchParams}>Simple</button>
 
         <button className='vansPage-btn' id='luxury'
         style={filterCheckObj.luxury ? {color: filterBtnColor.color1,
         padding: "calc(0.25rem + 0.15vw) calc(0.75rem + 0.75vw)"} 
         : {color: "#4D4D4D"}}
-        onClick={handleFilter}>Luxury</button>
+        onClick={handleSearchParams}>Luxury</button>
         
         <button className='vansPage-btn' id='rugged'
         style={filterCheckObj.rugged ? {color: filterBtnColor.color1,
         padding: "calc(0.25rem + 0.15vw) calc(0.75rem + 0.75vw)"} 
         : {color: "#4D4D4D"}}
-        onClick={handleFilter}>Rugged</button>
+        onClick={handleSearchParams}>Rugged</button>
         
         <span className='vansPage-clear'
         onClick={handleClear}>Clear Filters</span>
@@ -128,8 +132,6 @@ function Vans() {
       </div>
     </div>
     </>
-
-
   )
 }
 
