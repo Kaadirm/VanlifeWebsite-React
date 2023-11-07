@@ -84,6 +84,8 @@ a.active-link {
   min-height: 80vh;
   background-color: black;
   gap: calc(1rem + 4vw);
+  background: url("/src/Assets/images/home.jpg") no-repeat center;
+  background-size: cover;
 }
 
 .homePage-header {
@@ -93,7 +95,7 @@ a.active-link {
 }
 
 .homePage-context {
-  color: rgb(158, 150, 148);
+  color: rgb(226, 222, 222);
   font-size: calc(0.5rem + 1.1vw);
 }
 
@@ -105,9 +107,9 @@ a.active-link {
   padding: calc(0.4rem + 0.5vw) 0;
   font-size: calc(0.4rem + 0.75vw);
   font-weight: 700;
+  border: none;
   cursor: pointer;
 }
-
 
 /* CSS for About Page Content */
 
@@ -580,4 +582,49 @@ a.active-link {
 
 .hostVansPhoto-img {
   width: calc(6rem + 15vw);
+}
+
+
+
+/* CSS for NotFound Page Content */
+
+.notFoundPage-container {
+  min-height: 80vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4%;
+}
+
+.notFoundPage-frame {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: calc(2rem + 3vw);
+}
+
+.notFoundPage-header {
+  margin: 0;
+  align-self: center;
+  text-align: center;
+  font-size: calc(0.7rem + 1.5vw);
+}
+
+.notFoundPage-btn {
+  padding: calc(0.5rem + 0.7vw) 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: calc(0.6rem + 0.4vw);
+}
+
+@media screen and (max-width: 1024px) {
+  .notFoundPage-frame {
+    width: 100%;
+    padding: 0 3.5%;
+  }
 }
