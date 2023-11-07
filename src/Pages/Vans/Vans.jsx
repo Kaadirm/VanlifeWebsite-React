@@ -24,25 +24,36 @@ function Vans() {
     "luxury": "#161616"
   }
 
-  //Function for altering searchParameter values
+  // Function for altering searchParameter values
   const handleSearchParams = (e) => {
     const {id} = e.target
-    if(searchParams.has("type", id)){
-      searchParams.delete("type", id)
-      setSearchParams(searchParams)
+    const searchText = searchParams.toString().split("&")
+    if(searchText.includes(`type=${id}`)){
+      const newUrl = searchText.filter(item => item !== `type=${id}`)
+      setSearchParams(newUrl.join("&"))
     }
     else{
-      searchParams.append("type", id)
-      setSearchParams(searchParams)
+      searchText.push(`type=${id}`)
+      setSearchParams(searchText.join("&"))
     }
+              //First I used has/delete/append methods but they have some mobile incompatibility (key and value together not supported)
+          // const {id} = e.target
+          // if(searchParams.has("type", id)){
+          //   searchParams.delete("type", id)
+          //   setSearchParams(searchParams)
+          // }
+          // else{
+          //   searchParams.append("type", id)
+          //   setSearchParams(searchParams)
+          // }        
   }
-  
+    
   //Connection between searchParam and FilterCheckObj by using useEffect
   useEffect(() => {
     setFilterCheckObj({
-      "simple": searchParams.has("type", "simple"),
-      "luxury": searchParams.has("type", "luxury"),
-      "rugged": searchParams.has("type", "rugged")
+      "simple": searchParams.toString().split("&").includes("type=simple"),
+      "luxury": searchParams.toString().split("&").includes("type=luxury"),
+      "rugged": searchParams.toString().split("&").includes("type=rugged")
     });
   }, [searchParams])
 
@@ -74,8 +85,6 @@ function Vans() {
       setFilterVans(vans.filter(item =>filterCheckObj[item.type] === true))
     }
   }, [vans, filterCheckObj])
-
-  console.count("hel")
 
   return (
     <>
@@ -112,9 +121,9 @@ function Vans() {
       </div>
 
       {/* Vans part where data goes in grids */}
-      
+      {filterVans.length > 0 ? 
       <div className='vansPage-van-grids'>{filterVans.map(item => 
-        <Link to={`${item.id}`}>
+        <Link to={item.id} state={{search: `${searchParams.toString()}`}}>
           <div className='vansPage-van-grid'>
             <div><img className='vansPage-img' src={item.imageUrl} alt={item.name} /></div>
             <div className='vansPage-namePrice-div'>
@@ -130,6 +139,7 @@ function Vans() {
           </div>
         </Link>)}
       </div>
+      : <h1>Loading</h1>}
     </div>
     </>
   )

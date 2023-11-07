@@ -16,7 +16,7 @@ console.count("hey")
     <h2 className='hostVans-header'>Your listed vans</h2>
     {!hostVans ? <h2>...loading</h2> : hostVans.map(item => 
       <div className='hostVans-van-block'>
-        <NavLink to={`${item.id}`}
+        <NavLink to={item.id}
         className={({isActive}) => isActive ? "active-link" : ""}
         >
           <div>

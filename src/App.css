@@ -353,11 +353,14 @@ a.active-link {
   cursor: pointer;
 }
 
+.detailPage-img-div {
+  padding-bottom: calc(0.5rem + 0.8vw);
+}
+
 .detailPage-img {
   width: 22vw;
   aspect-ratio: 1.25 / 1;
   border-radius: 10px;
-  padding-bottom: calc(0.5rem + 0.8vw);
 }
 
 .detailPage-btn {

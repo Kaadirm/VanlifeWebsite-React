@@ -1,5 +1,5 @@
 import React from 'react'
-import van from '../Assets/van.jpg'
+import van from '../Assets/images/van.jpg'
 
 function About() {
   return (
