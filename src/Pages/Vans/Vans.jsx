@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+import { getVans } from '../../api'
 
 function Vans() {
                 //Variables
@@ -12,6 +13,8 @@ function Vans() {
   const [searchParams, setSearchParams] = useSearchParams()
   //Filtering object to decide 
   const [filterCheckObj, setFilterCheckObj] = useState({})
+  //Error state to manage errors
+  const [error, setError] = useState(null)
 
   const filterBtnColor = {
     "color1": "rgb(192, 193, 194)"
@@ -23,6 +26,33 @@ function Vans() {
     "rugged": "#115E59",
     "luxury": "#161616"
   }
+
+  const [load, setLoad] = useState(false)
+
+  // Data fetching from Mock API (Mirage JS)
+  useEffect(() => {
+    
+    const loadVans = async () => {
+      setLoad(true)
+      try{
+        const data = await getVans()
+        setVans(data)
+      }catch (err) {
+        setError(err)
+      }finally{
+        setLoad(false)
+      }
+      
+    }
+    loadVans()
+    // I have replaced this with async function and call getVans from api.js file
+    // It is now much more cleaner
+    // fetch("/api/vans")
+    // .then(response => response.json())
+    // .then(json => setVans(json.vans))
+  },[])
+
+  console.count("hey");
 
   // Function for altering searchParameter values
   const handleSearchParams = (e) => {
@@ -57,15 +87,6 @@ function Vans() {
     });
   }, [searchParams])
 
-
-  //Data fetching from Mock API (Mirage JS)
-  useEffect(() => {
-    fetch("/api/vans")
-    .then(response => response.json())
-    .then(json => setVans(json.vans))
-  },[])
-
-
   //            Clearing function to reset 
   const handleClear = () => {
     if(searchParams.size === 0) {
@@ -85,6 +106,11 @@ function Vans() {
       setFilterVans(vans.filter(item =>filterCheckObj[item.type] === true))
     }
   }, [vans, filterCheckObj])
+
+  if(error){
+    return <div className='error-container'><h1>There was an error: {error.message}</h1></div>
+  }
+  
 
   return (
     <>
@@ -119,9 +145,10 @@ function Vans() {
         <span className='vansPage-clear'
         onClick={handleClear}>Clear Filters</span>
       </div>
+      
+      
 
       {/* Vans part where data goes in grids */}
-      {filterVans.length > 0 ? 
       <div className='vansPage-van-grids'>{filterVans.map(item => 
         <Link to={item.id} state={{search: `${searchParams.toString()}`}}>
           <div className='vansPage-van-grid'>
@@ -139,7 +166,6 @@ function Vans() {
           </div>
         </Link>)}
       </div>
-      : <h1>Loading</h1>}
     </div>
     </>
   )

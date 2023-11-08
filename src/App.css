@@ -631,3 +631,16 @@ a.active-link {
     padding: 0 3.5%;
   }
 }
+
+.error-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container>* {
+  margin: 0;
+  font-size: calc(1rem + 1.5vw);
+}
