@@ -1,12 +1,17 @@
 import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import { getVans } from '../../api'
+
+export const loader = () => {
+  // throw new Error("loader")
+  return getVans()
+}
 
 function Vans() {
                 //Variables
   //Base data
-  const [vans, setVans] = useState([])
+  const vans = useLoaderData()
   //Data for filtering
   const [filterVans, setFilterVans] = useState([])
   //SearchParam data for filtering and refreshing page
@@ -14,7 +19,7 @@ function Vans() {
   //Filtering object to decide 
   const [filterCheckObj, setFilterCheckObj] = useState({})
   //Error state to manage errors
-  const [error, setError] = useState(null)
+  // const [error, setError] = useState(null)
 
   const filterBtnColor = {
     "color1": "rgb(192, 193, 194)"
@@ -27,32 +32,29 @@ function Vans() {
     "luxury": "#161616"
   }
 
-  const [load, setLoad] = useState(false)
-
   // Data fetching from Mock API (Mirage JS)
-  useEffect(() => {
-    
-    const loadVans = async () => {
-      setLoad(true)
-      try{
-        const data = await getVans()
-        setVans(data)
-      }catch (err) {
-        setError(err)
-      }finally{
-        setLoad(false)
-      }
-      
-    }
-    loadVans()
-    // I have replaced this with async function and call getVans from api.js file
-    // It is now much more cleaner
-    // fetch("/api/vans")
-    // .then(response => response.json())
-    // .then(json => setVans(json.vans))
-  },[])
+  // Because of using useLoadData hook we don't need to useEffect when component onmount
 
-  console.count("hey");
+  // useEffect(() => {
+  //   const loadVans = async () => {
+  //     setLoad(true)
+  //     try{
+  //       const data = await getVans()
+  //       setVans(data)
+  //     }catch (err) {
+  //       setError(err)
+  //     }finally{
+  //       setLoad(false)
+  //     }
+      
+  //   }
+  //   loadVans()
+            // I have replaced this with async function and call getVans from api.js file
+                  // It is now much more cleaner
+                  // fetch("/api/vans")
+                  // .then(response => response.json())
+                  // .then(json => setVans(json.vans))
+  // },[])
 
   // Function for altering searchParameter values
   const handleSearchParams = (e) => {
@@ -107,10 +109,11 @@ function Vans() {
     }
   }, [vans, filterCheckObj])
 
-  if(error){
-    return <div className='error-container'><h1>There was an error: {error.message}</h1></div>
-  }
-  
+  // if(error){
+  //   return <div className='error-container'><h1>There was an error: {error.message}</h1></div>
+  // }
+
+  // throw new Error("Undefined is not a function")
 
   return (
     <>
@@ -147,7 +150,6 @@ function Vans() {
       </div>
       
       
-
       {/* Vans part where data goes in grids */}
       <div className='vansPage-van-grids'>{filterVans.map(item => 
         <Link to={item.id} state={{search: `${searchParams.toString()}`}}>
