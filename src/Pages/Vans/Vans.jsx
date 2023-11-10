@@ -109,11 +109,8 @@ function Vans() {
     }
   }, [vans, filterCheckObj])
 
-  // if(error){
-  //   return <div className='error-container'><h1>There was an error: {error.message}</h1></div>
-  // }
 
-  // throw new Error("Undefined is not a function")
+  // throw new Error("this is a test error")
 
   return (
     <>

@@ -9,6 +9,7 @@ import {
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import Login from "./Pages/Login";
 import Vans, { loader as vansPageLoader } from "./Pages/Vans/Vans";
 import VansDetail from "./Pages/Vans/VansDetail";
 import HostLayout from "./Components/HostLayout";
@@ -21,6 +22,7 @@ import HostVansInfo from "./Pages/Host/HostVansInfo";
 import HostVansPricing from "./Pages/Host/HostVansPricing";
 import HostVansPhoto from "./Pages/Host/HostVansPhoto";
 import NotFound from "./Pages/NotFound";
+import Error from "./Components/Error";
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -31,10 +33,14 @@ const router = createHashRouter(
         path="vans"
         element={<Vans />}
         loader={vansPageLoader}
-        errorElement={<NotFound />}
+        errorElement={<Error />}
       />
-      <Route path="vans/:id" element={<VansDetail />} />
-      <Route path="host" element={<HostLayout />}>
+      <Route
+        path="vans/:id"
+        element={<VansDetail />}
+        errorElement={<Error />}
+      />
+      <Route path="host" element={<HostLayout />} errorElement={<Error />}>
         <Route index element={<Dashboard />} />
         <Route path="income" element={<Income />} />
         <Route path="vans" element={<HostVans />} />
@@ -45,6 +51,7 @@ const router = createHashRouter(
         </Route>
         <Route path="reviews" element={<Reviews />} />
       </Route>
+      <Route path="login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
