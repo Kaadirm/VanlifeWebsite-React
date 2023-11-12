@@ -1,20 +1,27 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+import {requireAuth} from "../../utils"
+
+export async function loader () {
+  await requireAuth()
+  return getHostVans()
+}
 
 function Vans() {
-  const [hostVans, setHostVans] = useState(null)
+//const [hostVans, setHostVans] = useState(null)
+  const hostVans = useLoaderData()
+//useEffect(() => {
+//   fetch("/api/host/vans")
+//   .then(response => response.json())
+//   .then(data => setHostVans(data.vans))
+// }, [])
 
-useEffect(() => {
-  fetch("/api/host/vans")
-  .then(response => response.json())
-  .then(data => setHostVans(data.vans))
-}, [])
-console.count("hey")
   return (<>
   <div className='hostVans-container'>
     <h2 className='hostVans-header'>Your listed vans</h2>
-    {!hostVans ? <h2>...loading</h2> : hostVans.map(item => 
+    {hostVans.map(item => 
       <div className='hostVans-van-block'>
         <NavLink to={item.id}
         className={({isActive}) => isActive ? "active-link" : ""}

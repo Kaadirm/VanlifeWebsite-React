@@ -50,13 +50,23 @@ a.active-link {
 }
 
 .link-div {
-  width: calc(5rem + 10vw);
+  width: calc(7rem + 11vw);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .link-div>a {
   font-size: calc(0.65rem + 0.75vw);
+}
+
+.avatar-link {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-icon {
+  width: calc(0.8rem + 0.8vw);
 }
 
 .footer {
@@ -704,6 +714,14 @@ a.active-link {
   align-self: center;
   text-align: center;
   font-size: calc(0.7rem + 1.5vw);
+}
+
+.loginPage-message {
+  margin: 0;
+  align-self: center;
+  text-align: center;
+  color: rgb(193, 97, 97);
+  font-size: calc(0.45rem + 0.4vw);
 }
 
 .loginPage-input-div {

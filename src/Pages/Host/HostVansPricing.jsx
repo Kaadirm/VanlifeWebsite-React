@@ -2,12 +2,10 @@ import React from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 function HostVansPricing() {
-const [van, setVan] = useOutletContext()
-
-console.log(van);
+const van = useOutletContext()
   return (
 
-    <div className='hostVansPricing'>${van[0].price}.00<span 
+    <div className='hostVansPricing'>${van.price}.00<span 
     style={{fontWeight: "normal", color: "gray"}}
     >/day</span></div>
   )

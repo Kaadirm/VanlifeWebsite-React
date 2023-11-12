@@ -4,13 +4,13 @@ import { useSearchParams } from 'react-router-dom'
 import { getVans } from '../../api'
 
 export const loader = () => {
-  // throw new Error("loader")
   return getVans()
 }
 
 function Vans() {
                 //Variables
   //Base data
+  //We get the data we need through useLoaderData hook
   const vans = useLoaderData()
   //Data for filtering
   const [filterVans, setFilterVans] = useState([])

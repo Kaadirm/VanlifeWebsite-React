@@ -3,9 +3,9 @@ import { useOutletContext } from 'react-router-dom';
 
 
 function HostVansPhoto() {
-  const [van, setVan] = useOutletContext()
+  const van = useOutletContext()
   return (
-    <div className='hostVansPhoto-div'><img className='hostVansPhoto-img' src={van[0].imageUrl} alt='van'></img></div>
+    <div className='hostVansPhoto-div'><img className='hostVansPhoto-img' src={van.imageUrl} alt='van'></img></div>
   )
 }
 

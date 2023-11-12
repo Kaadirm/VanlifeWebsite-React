@@ -9,20 +9,25 @@ import {
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Login from "./Pages/Login";
+import Login, { loader as loginLoader } from "./Pages/Login";
 import Vans, { loader as vansPageLoader } from "./Pages/Vans/Vans";
-import VansDetail from "./Pages/Vans/VansDetail";
+import VansDetail, {
+  loader as vansPageDetailLoader,
+} from "./Pages/Vans/VansDetail";
 import HostLayout from "./Components/HostLayout";
 import Dashboard from "./Pages/Host/Dashboard";
 import Income from "./Pages/Host/Income";
-import HostVans from "./Pages/Host/HostVans";
+import HostVans, { loader as hostVansPageLoader } from "./Pages/Host/HostVans";
 import Reviews from "./Pages/Host/Reviews";
-import HostVansDetails from "./Pages/Host/HostVansDetails";
+import HostVansDetails, {
+  loader as hostVansPageDetailsLoader,
+} from "./Pages/Host/HostVansDetails";
 import HostVansInfo from "./Pages/Host/HostVansInfo";
 import HostVansPricing from "./Pages/Host/HostVansPricing";
 import HostVansPhoto from "./Pages/Host/HostVansPhoto";
 import NotFound from "./Pages/NotFound";
 import Error from "./Components/Error";
+import { requireAuth } from "./utils";
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -38,20 +43,54 @@ const router = createHashRouter(
       <Route
         path="vans/:id"
         element={<VansDetail />}
+        loader={vansPageDetailLoader}
         errorElement={<Error />}
       />
-      <Route path="host" element={<HostLayout />} errorElement={<Error />}>
-        <Route index element={<Dashboard />} />
-        <Route path="income" element={<Income />} />
-        <Route path="vans" element={<HostVans />} />
-        <Route path="vans/:id" element={<HostVansDetails />}>
-          <Route index element={<HostVansInfo />} />
-          <Route path="pricing" element={<HostVansPricing />} />
-          <Route path="photos" element={<HostVansPhoto />} />
+      <Route
+        path="host"
+        element={<HostLayout />}
+        errorElement={<Error />}
+        loader={async () => await requireAuth()}
+      >
+        <Route
+          index
+          element={<Dashboard />}
+          loader={async () => await requireAuth()}
+        />
+        <Route
+          path="income"
+          element={<Income />}
+          loader={async () => await requireAuth()}
+        />
+        <Route path="vans" element={<HostVans />} loader={hostVansPageLoader} />
+        <Route
+          path="vans/:id"
+          element={<HostVansDetails />}
+          loader={hostVansPageDetailsLoader}
+        >
+          <Route
+            index
+            element={<HostVansInfo />}
+            loader={async () => await requireAuth()}
+          />
+          <Route
+            path="pricing"
+            element={<HostVansPricing />}
+            loader={async () => await requireAuth()}
+          />
+          <Route
+            path="photos"
+            element={<HostVansPhoto />}
+            loader={async () => await requireAuth()}
+          />
         </Route>
-        <Route path="reviews" element={<Reviews />} />
+        <Route
+          path="reviews"
+          element={<Reviews />}
+          loader={async () => await requireAuth()}
+        />
       </Route>
-      <Route path="login" element={<Login />} />
+      <Route path="login" element={<Login />} loader={loginLoader} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

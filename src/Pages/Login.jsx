@@ -1,5 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+
+export const loader = ({request}) => {
+    return new URL(request.url).searchParams.get("message")
+}
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -7,6 +12,9 @@ function Login() {
         email: "",
         password: ""
     })
+
+    const message = useLoaderData()
+
     const handleChange = (e) => {
         const {name, value} = e.target 
         setFormData(preVal => ({
@@ -28,6 +36,7 @@ function Login() {
         <div className="loginPage-container">
         <div className="loginPage-frame">
             <h1 className='loginPage-header'>Sign in to your account</h1>
+            {message && <h3 className='loginPage-message'>{message}</h3>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 

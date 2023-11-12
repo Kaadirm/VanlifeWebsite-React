@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, useLoaderData} from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import { getVans } from '../../api';
+
+export const loader = ({params}) => {
+    return getVans(params.id)
+}
 
 function VansDetail() {
                 //Variables
-    //param variables for fetch                
-    const param = useParams()
-    //Data to go front part
-    const [van, setVan] = useState()
+
+    //param variables for fetch  (Changed with params in loader)              
+    // const params = useParams()
+    
     //location info for the link to go back as you left
     const location = useLocation()
     const searchState = location.state.search
+    //Data to go front part
+    const van = useLoaderData()
 
+    // Changed with useLoaderData hook
     //Fetching data from api according to item.id (comes from paramId)
-    useEffect(() => {
-        fetch(`/api/vans/${param.id}`)
-        .then(response => response.json())
-        .then(data => setVan(data.vans) )
-    }, [param.id])
+    // useEffect(() => {
+    //     fetch(`/api/vans/${param.id}`)
+    //     .then(response => response.json())
+    //     .then(data => setVan(data.vans) )
+    // }, [param.id])
+
+
 
     //Background color for type buttons
     const btnBackgroundColor = {
@@ -30,7 +40,7 @@ function VansDetail() {
     return (
     <>
     <div className='detailPage-container'>
-        {van ? <div className='detailPage-van'>
+        <div className='detailPage-van'>
             {/* Link goes to parent page considering parent page filtering */}
             <Link to={`/Vans?${searchState}`}>
 
@@ -51,7 +61,7 @@ function VansDetail() {
             <p className="detailPage-price">${van.price}<span className="detailPage-day">/day</span></p>
             <p className="detailPage-description">{van.description}</p>
             <button className="detailPage-rent-btn" >Rent this van</button>
-        </div> : <h2 style={{margin: "0"}}>Loading...</h2>}
+        </div>
     </div>
     </>
   )
