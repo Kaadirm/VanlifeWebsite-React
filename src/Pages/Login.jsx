@@ -1,9 +1,28 @@
 import React from 'react'
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { loginUser } from './../api';
 
 export const loader = ({request}) => {
     return new URL(request.url).searchParams.get("message")
+}
+
+export const action = async ({request}) => {
+    // const formData = await request.formData()
+    // const email = formData.get("email")
+    // const password = formData.get("password")
+    // const data = await loginUser({email, password})
+    // console.log(data)
+    // return null
+        //     If you want to use React <Form /> Component feature get it done these steps
+        // 1- in the App.js route login should has action={loginAction}
+        // 2- import beside of Login component (action as loginAction)
+        // 2- opening and closing form elements should have capital letter <Form></Form>
+        // 3- import Form from "react-router-dom"
+        // 4- add method="post" Form element
+        // 5- delete handle submit function and useStates
+        // 6- delete handleChange functions, onChange and value attributes
+
 }
 
 function Login() {
@@ -12,8 +31,10 @@ function Login() {
         email: "",
         password: ""
     })
-
     const message = useLoaderData()
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const {name, value} = e.target 
@@ -25,7 +46,15 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData)
+        setIsSubmitting(true)
+        setError(null)
+        loginUser(formData)
+        .then(data => {
+            localStorage.setItem("isLoggedIn", true)
+            navigate("/host", {replace: true}) 
+        }) 
+        .catch((err) => setError(err))
+        .finally(() => setIsSubmitting(false));
     }
 
     const togglePasswordVisibility = () => {
@@ -37,6 +66,7 @@ function Login() {
         <div className="loginPage-frame">
             <h1 className='loginPage-header'>Sign in to your account</h1>
             {message && <h3 className='loginPage-message'>{message}</h3>}
+            {error && <h3 className='loginPage-message'>{error.message}</h3>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
@@ -63,7 +93,8 @@ function Login() {
                     {showPassword ? '👁️' : '🔒'}
                     </span>
                 </div>
-                <button className="loginPage-btn">Log in</button>
+                <button className="loginPage-btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Loggin in..." : "Log in"}</button>
             </form>
         </div>
         </div>

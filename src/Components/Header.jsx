@@ -15,7 +15,8 @@ function Header() {
               <NavLink className={({isActive}) => isActive ? "active-link" : "gray-link"}
               to="vans">Vans</NavLink>
               <div>
-                <Link to="login" className='avatar-link' ><img className="avatar-icon" src={avatarIcon} alt="avatar-icon" /></Link>
+                <Link to="login" className='avatar-link' ><img className="avatar-icon" src={avatarIcon} alt="avatar-icon" 
+                onClick={() => {localStorage.removeItem("isLoggedIn")}}/></Link>
                 <button style={{display: "none"}}>X</button>
               </div>
             </div>
