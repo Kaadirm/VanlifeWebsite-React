@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  redirect,
 } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
@@ -90,7 +91,18 @@ const router = createHashRouter(
           loader={async () => await requireAuth()}
         />
       </Route>
-      <Route path="login" element={<Login />} loader={loginLoader} />
+      <Route
+        path="login"
+        element={<Login />}
+        loader={() => {
+          if (localStorage.getItem("isLoggedIn")) {
+            const response = redirect("/");
+            response.body = true;
+            return response;
+          }
+          return loginLoader;
+        }}
+      />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

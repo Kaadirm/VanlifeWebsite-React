@@ -42,6 +42,7 @@ a.active-link {
   justify-content: space-between;
   align-items: center;
   padding: 0 2%;
+  position: relative;
 }
 
 .header>a {
@@ -60,9 +61,48 @@ a.active-link {
   font-size: calc(0.65rem + 0.75vw);
 }
 
-.avatar-link {
+.user-div {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 5px;
+}
+
+.user-div-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.userXHide {
+  border-radius: 50%;
+  font-size: calc(0.35rem + 0.35vw);
+  aspect-ratio: 1/1;
+  padding: calc(0.1rem + 0.1vw) calc(0.2rem + 0.2vw);
+  border: 1px solid rgb(235, 119, 48);
+  background-color: rgb(125, 123, 125);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: none;
+}
+
+.userXShow {
+  border-radius: 50%;
+  font-size: calc(0.35rem + 0.35vw);
+  aspect-ratio: 1/1;
+  padding: calc(0.1rem + 0.1vw) calc(0.2rem + 0.2vw);
+  border: 1px solid rgb(235, 119, 48);
+  background-color: rgb(125, 123, 125);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  bottom: calc(1.5rem - 0.4vw);
 }
 
 .avatar-icon {

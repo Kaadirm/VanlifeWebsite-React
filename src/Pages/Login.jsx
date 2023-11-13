@@ -1,31 +1,46 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { loginUser } from './../api';
 
 export const loader = ({request}) => {
+    if(localStorage.getItem('isLoggedIn')){
+        return 
+    }
     return new URL(request.url).searchParams.get("message")
-}
+    
+}   
 
-export const action = async ({request}) => {
-    // const formData = await request.formData()
-    // const email = formData.get("email")
-    // const password = formData.get("password")
-    // const data = await loginUser({email, password})
-    // console.log(data)
-    // return null
-        //     If you want to use React <Form /> Component feature get it done these steps
-        // 1- in the App.js route login should has action={loginAction}
-        // 2- import beside of Login component (action as loginAction)
-        // 2- opening and closing form elements should have capital letter <Form></Form>
-        // 3- import Form from "react-router-dom"
-        // 4- add method="post" Form element
-        // 5- delete handle submit function and useStates
-        // 6- delete handleChange functions, onChange and value attributes
+// export const action = async ({request}) => {
+//     const formData = await request.formData()
+//     const email = formData.get("email")
+//     const password = formData.get("password")
+//     try{
+//         const data = await loginUser({email, password})
+//         localStorage.setItem("loggedIn", true)
+//         return redirect("/host")
+//     }catch(err){
+//         return err.message
+//     }
 
-}
+//     return null
+//             If you want to use React <Form /> Component feature get it done these steps
+//         1- in the App.js route login should has action={loginAction}
+//         2- import beside of Login component (action as loginAction)
+//         2- opening and closing form elements should have capital letter <Form></Form>
+//         3- import Form from "react-router-dom"
+//         4- add method="post" Form element
+//         5- delete handle submit function and useStates
+//         6- delete handleChange functions, onChange and value attributes
+//         7- import useActionData from  "react-router-dom"
+//         8- put useActionData() in a state then use it to show error message to Users
+//         9- You can disable login button during submit by using useNavigation() 
+//              import it from "react-router-dom, put in a state in Login Component function
+//              then use it like disabled={navigation.state}
+// }
 
 function Login() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         email: "",
@@ -35,7 +50,6 @@ function Login() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null)
     const navigate = useNavigate()
-
     const handleChange = (e) => {
         const {name, value} = e.target 
         setFormData(preVal => ({
@@ -44,6 +58,13 @@ function Login() {
         }))
     }
 
+    
+    // useEffect(() => {
+    //     if (isLoggedIn) {
+    //       navigate(-1, { replace: true });
+    //     }
+    // }, [isLoggedIn, navigate]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true)
@@ -51,7 +72,7 @@ function Login() {
         loginUser(formData)
         .then(data => {
             localStorage.setItem("isLoggedIn", true)
-            navigate("/host", {replace: true}) 
+            navigate(-1, {replace: true}) 
         }) 
         .catch((err) => setError(err))
         .finally(() => setIsSubmitting(false));
