@@ -31,7 +31,6 @@ function Vans() {
     "rugged": "#115E59",
     "luxury": "#161616"
   }
-
   // Data fetching from Mock API (Mirage JS)
   // Because of using useLoadData hook we don't need to useEffect when component onmount
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import van from '../Assets/images/van.jpg'
+import { Link } from 'react-router-dom'
 
 function About() {
   return (
@@ -27,7 +28,7 @@ function About() {
         <div className='aboutPage-btn-div'>
             <h4 className='aboutPage-btn-header'>Your destination is waiting.</h4>
             <h4 className='aboutPage-btn-header'>Your van is ready.</h4>
-            <button className='aboutPage-btn'>Explore our vans</button>
+            <Link to="/vans"><button className='aboutPage-btn'>Explore our vans</button></Link>
         </div>
       </div>  
     </div>

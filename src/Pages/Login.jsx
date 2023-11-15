@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { loginUser } from './../api';
 
@@ -40,7 +40,6 @@ export const loader = ({request}) => {
 // }
 
 function Login() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
         email: "",

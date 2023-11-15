@@ -70,14 +70,6 @@ a.active-link {
   gap: 5px;
 }
 
-.user-div-show {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-}
-
 .userXHide {
   border-radius: 50%;
   font-size: calc(0.35rem + 0.35vw);
@@ -102,7 +94,7 @@ a.active-link {
   font-weight: 600;
   cursor: pointer;
   position: absolute;
-  bottom: calc(1.5rem - 0.4vw);
+  bottom: calc(0.5vw + 0.5rem);
 }
 
 .avatar-icon {
@@ -147,6 +139,10 @@ a.active-link {
 .homePage-context {
   color: rgb(226, 222, 222);
   font-size: calc(0.5rem + 1.1vw);
+}
+
+.homePage-container>a {
+  width: 100%;
 }
 
 .homePage-btn {
@@ -492,6 +488,7 @@ a.active-link {
   width: calc(12.5rem + 18vw);
   justify-content: space-between;
   padding: 0.5% 2%;
+  font-size: calc(0.75rem + 0.75vw);
 }
 
 .hostPage-nav>a:hover {
@@ -501,6 +498,281 @@ a.active-link {
 
 .hostPage-nav-div {
   width: 100%;
+}
+
+/* CSS for HostDashboard Content */
+
+.hostDashboard-container {
+  padding: 2% 0 2% 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostDashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(0.5rem + 0.5vw);
+  padding: 0 0 calc(1vw + 1rem) 0;
+  background-color: rgb(255, 234, 208);
+  padding: 2%
+}
+
+.hostDashboard-header>div>* {
+  margin: 0;
+  padding: 0;
+}
+
+.hostDashboard-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5rem + 0.5vw)
+}
+
+.hostDashboard-header-info>h1 {
+  font-size: calc(1.25rem + 1.25vw);
+}
+
+.hostDashboard-header-info>p {
+  font-size: calc(0.5rem + 0.5vw);
+  color: gray;
+  font-weight: 500;
+}
+
+.hostDashboard-header-info>p>span {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.hostDashboard-header-info>h2 {
+  font-size: calc(1.5rem + 1.5vw);
+}
+
+.hostDashboard-header>a {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+}
+
+
+
+.hostDashboard-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1% 2%;
+  background-color: rgb(255, 221, 178);
+}
+
+.hostDashboard-reviews>* {
+  margin: 0;
+  padding: 0;
+}
+
+.hostDashboard-reviews-info {
+  display: flex;
+  align-items: center;
+  gap: calc(0.75rem + 0.75vw);
+}
+
+.hostDashboard-reviews-info>h2,
+.hostDashboard-reviews-info>div {
+  font-size: calc(0.7rem + 0.7vw);
+}
+
+
+.hostDashboard-reviews-info>div {
+  display: flex;
+  align-items: center;
+  gap: calc(0.15rem + 0.15vw);
+}
+
+.hostDashboard-reviews-info>div>.star {
+  color: rgb(255, 140, 56);
+}
+
+.hostDashboard-reviews-info>div>p {
+  color: gray;
+  font-weight: 500;
+}
+
+.hostDashboard-reviews-info>div>p>span {
+  font-weight: 700;
+  color: black;
+}
+
+.hostDashboard-reviews>a {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+}
+
+.hostDashboard-vans {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1rem + 1vw);
+}
+
+.hostDashboard-vans-header {
+  font-size: calc(0.5rem + 0.5vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2%;
+}
+
+.hostDashboard-vans-header>* {
+  margin: 0;
+  padding: 0;
+}
+
+.hostDashboard-vans-header>a {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+}
+
+.hostDashboard-vans-block {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: calc(1rem + 1vw);
+  padding-right: calc(0.6rem + 0.6vw);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hostDashboard-vans-block>div {
+  display: flex;
+  gap: calc(0.7rem + 0.7vw);
+  align-items: center;
+}
+
+.hostDashboard-vans-block>div>img {
+  width: calc(5rem + 5vw);
+  border-radius: 10px;
+}
+
+.hostDashboard-vans-info>* {
+  margin: 0;
+  padding: 0;
+}
+
+.hostDashboard-vans-info>h3 {
+  font-size: calc(0.7rem + 0.7vw);
+  font-weight: 700;
+}
+
+.hostDashboard-vans-info>p {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+  color: gray;
+}
+
+.hostDashboard-vans-block>a {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+}
+
+/* CSS for HostIncome Content */
+
+.hostIncome-container {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostIncome-header {
+  margin: 0;
+  font-size: calc(1.5rem + 1.5vw);
+}
+
+.hostIncome-header-div {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5rem + 0.5vw);
+  padding: 0 0 calc(1vw + 1rem) 0;
+}
+
+.hostIncome-headerP {
+  font-size: calc(0.4rem + 0.4vw);
+  margin: 0;
+  padding: 0;
+  color: rgb(125, 123, 125)
+}
+
+.hostIncome-headerP>span {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+.hostIncome>h2 {
+  font-size: calc(2rem + 2vw);
+}
+
+
+.hostIncome-graph {
+  width: calc(17vw + 17rem);
+}
+
+@media screen and (max-width: 500px) {
+  .hostIncome-graph {
+    width: 100%;
+  }
+}
+
+.hostIncome-info-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hostIncome-info-header>h3 {
+  font-size: calc(0.6rem + 0.6vw)
+}
+
+.hostIncome-info-header>p {
+  color: rgb(125, 123, 125);
+  font-size: calc(0.4rem + 0.4vw)
+}
+
+
+.hostIncome-info-header>p>span {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+.hostIncome-transactions-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.7rem + 0.7vw);
+}
+
+.hostIncome-transaction {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.hostIncome-transaction>* {
+  margin: 0;
+  padding: 0;
+}
+
+.hostIncome-transaction>h3 {
+  font-size: calc(1rem + 1vw);
+}
+
+.hostIncome-transaction>p {
+  font-size: calc(0.7rem + 0.7vw);
 }
 
 /* CSS for HostVans Content */
@@ -542,6 +814,76 @@ a.active-link {
   font-size: calc(0.3rem + 1.5vw);
   margin: 0;
 }
+
+/* CSS for HostReviews Content */
+
+.hostReviews-container {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  background-color: rgb(254, 244, 234);
+}
+
+.hostReviews-header-div {
+  display: flex;
+  align-items: flex-end;
+  gap: calc(0.5rem + 0.5vw);
+  padding: calc(1vw + 1rem) 0;
+}
+
+.hostReviews-header {
+  margin: 0;
+  font-size: calc(0.8rem + 0.8vw);
+}
+
+.hostReviews-headerP {
+  font-size: calc(0.4rem + 0.4vw);
+  margin: 0;
+  padding: 0;
+  color: rgb(125, 123, 125)
+}
+
+.hostReviews-headerP>span {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+.hostReviews-graph {
+  width: calc(17vw + 17rem);
+}
+
+@media screen and (max-width: 500px) {
+  .hostReviews-graph {
+    width: 100%;
+  }
+}
+
+.hostReviews-reviews {
+  font-size: calc(0.4rem + 0.4vw)
+}
+
+.hostReviews-info {
+  display: flex;
+  gap: calc(0.25rem + 0.25vw);
+}
+
+.hostReviews-name {
+  font-weight: 600;
+}
+
+.hostReviews-date {
+  color: rgb(125, 123, 125);
+  font-weight: 600;
+}
+
+.hostReviews-context {
+  font-weight: 500;
+  font-size: calc(0.6rem + 0.6vw);
+  padding: 0 0 1rem 0;
+  text-align: justify;
+}
+
 
 
 /* CSS for HostVansDetail Content */

@@ -15,6 +15,11 @@ function Header() {
     }
   }
 
+  const handleClickX = (e) => {
+    setUserX("userXHide")
+    localStorage.removeItem("isLoggedIn")
+  }
+
   return (
     <nav className="header">
             <NavLink className={({isActive}) => isActive ? "active-link" : ""}
@@ -26,10 +31,10 @@ function Header() {
               to="about">About</NavLink>
               <NavLink className={({isActive}) => isActive ? "active-link" : "gray-link"}
               to="vans">Vans</NavLink>
-              <div className='user-div' onClick={console.log("hello")}>
+              <div className='user-div'>
                 <Link to="login" className='avatar-link'onClick={handleClick} ><img className="avatar-icon" src={avatarIcon} alt="avatar-icon" 
                 /></Link> 
-                <button className={userX} onClick={() => {localStorage.removeItem("isLoggedIn")}}>X</button>
+                <button className={userX} onClick={handleClickX}>X</button>
               </div>
             </div>
             

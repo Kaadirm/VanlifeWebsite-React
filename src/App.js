@@ -16,7 +16,9 @@ import VansDetail, {
   loader as vansPageDetailLoader,
 } from "./Pages/Vans/VansDetail";
 import HostLayout from "./Components/HostLayout";
-import Dashboard from "./Pages/Host/Dashboard";
+import Dashboard, {
+  loader as hostDashboardLoader,
+} from "./Pages/Host/Dashboard";
 import Income from "./Pages/Host/Income";
 import HostVans, { loader as hostVansPageLoader } from "./Pages/Host/HostVans";
 import Reviews from "./Pages/Host/Reviews";
@@ -50,24 +52,25 @@ const router = createHashRouter(
       <Route
         path="host"
         element={<HostLayout />}
-        errorElement={<Error />}
         loader={async () => await requireAuth()}
       >
-        <Route
-          index
-          element={<Dashboard />}
-          loader={async () => await requireAuth()}
-        />
+        <Route index element={<Dashboard />} loader={hostDashboardLoader} />
         <Route
           path="income"
           element={<Income />}
           loader={async () => await requireAuth()}
         />
-        <Route path="vans" element={<HostVans />} loader={hostVansPageLoader} />
+        <Route
+          path="vans"
+          element={<HostVans />}
+          loader={hostVansPageLoader}
+          errorElement={<Error />}
+        />
         <Route
           path="vans/:id"
           element={<HostVansDetails />}
           loader={hostVansPageDetailsLoader}
+          errorElement={<Error />}
         >
           <Route
             index
