@@ -1,26 +1,20 @@
-# Getting Started with Create React App
-
-[project live => https://kaadirm.github.io/VanlifeWebsite-React/#
-
-
-
-https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/e072b5bd-b2bc-444d-9a6a-f0f657ebcf0c
-
-
-
 # Project Name
 
 VanlifeWebsite-React is a web application built with React for renting and exploring Vans
+
+https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/e072b5bd-b2bc-444d-9a6a-f0f657ebcf0c
 
 ## Table of Contents
 
 - [VanlifeWebsite-React](#vanlifewebsite-react)
   - [Table of Contents](#table-of-contents)
   - [Demo](#demo)
-  - [Technology Used](#Technology Used)
+  - [Technology Used](#technology-used)
+  - [](#)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Folder Structure](#Folder Structure)
+  - [Folder Structure](#folder-structure)
+  - [Responsive Images](#images)
 
 ## Demo
 
@@ -38,34 +32,33 @@ Check out the live demo of VanlifeWebsite-React [here](https://kaadirm.github.io
 
 ### React Libraries and Hooks
 
-- **useLoaderData:** A custom hook for loading data in React components.
 - **useState:** A React hook for managing state in functional components.
-- **useEffect:** A React hook for handling side effects in functional components.
-- **Layout:** A component or pattern used for structuring the layout of your application.
+- **useEffect:** I did not use any useEffect hook for API calls, only used it for filter management.
+- **react-icons:** A library providing popular icons for React applications.
 - **<Link/>:** A React component for creating navigation links.
+- **NavLink and isActive:** Components for creating navigation links with active states so users can see which link they are on it.
+- **Outlet:** I used it to render any child component for the sake of any need.
+- **useOutletContext:** A hook for accessing states or any values shared with child routes from parent routes.
+- **loader**: By using the loader feature, route defined a "loader" function to provide data to the route element before it renders. So when fetching data is finished, the component mounts.
+- **useLoaderData:** This hook helped me to get data that loader function returns. In any case, when fetching data is needed, loader function handles it and through useLoaderData puts the data in a state.
 - **Protected Route:** A route that requires authentication to access.
 - **ErrorPage:** A page displayed in case of errors.
+- **errorElement:** When exceptions are thrown in loaders, actions, or component rendering, instead of the normal render path for Routes, the error path will be rendered.
+- **useRouteError:** Inside of an errorElement, this hook returns anything thrown during an action, loader, or rendering.
 - **NotFoundPage:** A page displayed when a route or resource is not found.
-- **filter based on useSearchParams:** Functionality to filter data based on search parameters. First I used has/delete/append methods but they have some mobile incompatibility (key and value together not supported) then changed it to a new function to check the string of searchparam part of the URL
-- **NavLink and isActive:** Components for creating navigation links with active states.
-- **useOutletContext:** A hook for accessing the context of the current route outlet.
-- **useLocation and LinkState:** Hooks for accessing the current location and managing link state.
-
-- 
-- **useParam:**
-- **useNavigate:**
-- **react-icons:**
-- **Outlet:**
-- **errorElement:**
-- **redirect:**
-  Relative Paths
-  
-
+- **useSearchParams(filter based on):** Functionality to filter data based on search parameters. So when the page is refreshed or the link is copied from the URL, filters will stay the same. First I used has/delete/append methods but they have some mobile incompatibility (key and value together not supported) then changed it to a new function to check the string of searchparam part of the URL.
+- **useParams:** Before using loader function When I do the simple fetch request in a component, used this to get the id of data-item (from current URL matching params) for making API calls by considering to item-id. But since loader function has own params parameter we don't need this anymore.
+- **useLocation and LinkState:** I used LinkSate to pass searchParams {search: `${searchParams.toString()}`}.
+                                 Then I grabbed searchParams from Link  (const location = useLocation() const searchState = location.state.search)
+                                 Finally, by using this searchParams we can get back to the exact page how we left (filter will all be same) <Link to={`/Vans?${searchState}`}>
+- **redirect:** When users are not logged in and trying to reach protected routes they will be redirected to the Login Page with the text "You must log in first". I get that by using the loader function and the features of searchParams and request.url which is in it. We can not use useNavigate here because hooks can't be inside of a loader function they must be in the component function.
+- **useNavigate:** When users logged in, I used this hook to send users back to the page where they came from (navigate(-1, {replace: true}))
+- **Relative Paths:** I used Relative Paths to reach nested routes. Because when the route gets complicated it is getting difficult to write every path from scratch.
   
 ### Router
 
 - **createBrowserRouter using v6.4 DATA-APIs:** Implementation of the React Router for navigation.
-- **Loader Functions:** Functions used to load components before the page is rendered.
+- This is so important cause we must use one of the v6.4 Data APIs to reach some features such as the loader, errorElement, useLoaderData, useRouteError...
 
 Feel free to check the project's source code for a more detailed look at the project's structure and dependencies.
 
@@ -84,54 +77,18 @@ password: 1234
 
 ## Folder Structure
 
-C:\SRC
-│   api.js
-│   App.css
-│   App.js
-│   index.css
-│   index.js
-│   logo.svg
-│   server.js
-│   utils.js
-│
-├───Assets
-│   └───images
-│           avatarIcon.png
-│           home.jpg
-│           incomeGraph.png
-│           reviewsGraph.png
-│           van.jpg
-│
-├───Components
-│       Error.jsx
-│       Footer.jsx
-│       Header.jsx
-│       HostLayout.jsx
-│       Layout.jsx
-│
-└───Pages
-    │   About.jsx
-    │   Home.jsx
-    │   Login.jsx
-    │   NotFound.jsx
-    │
-    ├───Host
-    │       Dashboard.jsx
-    │       HostVans.jsx
-    │       HostVansDetails.jsx
-    │       HostVansInfo.jsx
-    │       HostVansPhoto.jsx
-    │       HostVansPricing.jsx
-    │       Income.jsx
-    │       Reviews.jsx
-    │
-    └───Vans
-            Vans.jsx
-            VansDetail.jsx
+![FolderStructure](https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/7a37866c-22c3-4f2d-af58-6b69e52a9a41)
 
 
+## Images
 
+### Larger Screens
 
+![VanLife-LargerScreen](https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/599c4e8e-58fc-44ff-9a85-b02431eb7e8f)
+
+### Mobile
+
+![VanLife-MobileScreen](https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/87fc401f-76b9-4f3a-b32d-b57a0de0ada6)
 
 
 
