@@ -29,7 +29,7 @@ Check out the live demo of VanlifeWebsite-React [here](https://kaadirm.github.io
 - **JavaScript:** The programming language for client-side functionality.
 - **Axios-Formik:** I did not use Formik because Form is so basic and preferred the async function and fetch instead of Axios.
 
-### React Libraries and Hooks
+### React features (I wrote notes to explain to some of them if it needed)
 
 - **useState:** A React hook for managing state in functional components.
 - **useEffect:** I did not use any useEffect hook for API calls, only used it for filter management.
@@ -64,17 +64,31 @@ Feel free to check the project's source code for a more detailed look at the pro
 ## Installation
 
 1. **Clone the Repository:**
-   ```bash
    git clone https://github.com/Kaadirm/VanlifeWebsite-React.git
+
+2. **Navigate to the Project Directory:**
+  cd VanlifeWebsite-React
+
+3. **Install Dependencies:**
+  npm install 
+
+4. **Run the Application:**
+  npm start
+
+The application should now be running locally. Open your web browser and go to http://localhost:3000 to view the Vanlife Website.
+
+Note: Make sure you have Node.js and npm installed on your machine before running these commands.
+
+Now you have successfully installed and set up the VanlifeWebsite-React web application on your local environment. Feel free to explore and customize the code according to your needs!
 
 ## Usage
 
 To reach Host Page and what is in it. 
-username: kadir@hotmail.com
+username: kadir@hotmail.com (It starts with my name, but a random mail address)
 password: 1234
 
 
-## Folder Structure
+## SRC Folder Files Structure
 
 ![FolderStructure](https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/7a37866c-22c3-4f2d-af58-6b69e52a9a41)
 
