@@ -29,7 +29,7 @@ Check out the live demo of VanlifeWebsite-React [here](https://kaadirm.github.io
 - **JavaScript:** The programming language for client-side functionality.
 - **Axios-Formik:** I did not use Formik because Form is so basic and preferred the async function and fetch instead of Axios.
 
-### React features (I wrote notes to explain to some of them if it needed)
+### React features (I wrote notes to explain some of them if it needed)
 
 - **useState:** A React hook for managing state in functional components.
 - **useEffect:** I did not use any useEffect hook for API calls, only used it for filter management.
@@ -83,8 +83,8 @@ Now you have successfully installed and set up the VanlifeWebsite-React web appl
 
 ## Usage
 
-To reach Host Page and what is in it. 
-username: kadir@hotmail.com (It starts with my name, but a random mail address)
+To reach Host Page and what is in it. <br />
+username: kadir@hotmail.com (It starts with my name, but a random mail address) <br />
 password: 1234
 
 
