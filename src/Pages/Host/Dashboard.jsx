@@ -42,14 +42,16 @@ function Dashboard() {
                     </div>
                     {vans.map((item) => (
                     <div className="hostDashboard-vans-block" key={item.id}>
-                        <div>
-                            <img src={item.imageUrl} alt={`Photo of ${item.name}`} />
-                            <div className="hostDashboard-vans-info">
-                                <h3>{item.name}</h3>
-                                <p>${item.price}/day</p>
+                        <Link to={`vans/${item.id}`}>
+                            <div className='hostDashboard-vans-frame'>
+                                <img src={item.imageUrl} alt={`Photo of ${item.name}`} />
+                                <div className="hostDashboard-vans-info">
+                                    <h3>{item.name}</h3>
+                                    <p>${item.price}/day</p>
+                                </div>
                             </div>
-                        </div>
-                        <Link to={`vans/${item.id}`}>View</Link>
+                            <div className='hostDashboard-vans-view'>View</div>
+                        </Link>
                     </div>
                     ))}
                 </section>

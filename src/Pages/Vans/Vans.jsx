@@ -99,7 +99,6 @@ function Vans() {
   // setting filterVans for JSX part below
 
   useEffect(() => {
-    setFilterVans(vans)
     if(Object.values(filterCheckObj).every(item => item === false)){
       setFilterVans(vans)
     }
@@ -107,9 +106,6 @@ function Vans() {
       setFilterVans(vans.filter(item =>filterCheckObj[item.type] === true))
     }
   }, [vans, filterCheckObj])
-
-
-  // throw new Error("this is a test error")
 
   return (
     <>
@@ -148,7 +144,7 @@ function Vans() {
       
       {/* Vans part where data goes in grids */}
       <div className='vansPage-van-grids'>{filterVans.map(item => 
-        <Link to={item.id} state={{search: `${searchParams.toString()}`}}>
+        <Link key={item.id} to={item.id} state={{search: `${searchParams.toString()}`}}>
           <div className='vansPage-van-grid'>
             <div><img className='vansPage-img' src={item.imageUrl} alt={item.name} /></div>
             <div className='vansPage-namePrice-div'>

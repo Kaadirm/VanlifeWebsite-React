@@ -637,19 +637,22 @@ a.active-link {
   border-radius: 10px;
   padding: calc(1rem + 1vw);
   padding-right: calc(0.6rem + 0.6vw);
+}
+
+.hostDashboard-vans-block>a {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
 }
 
-.hostDashboard-vans-block>div {
+.hostDashboard-vans-frame {
   display: flex;
   gap: calc(0.7rem + 0.7vw);
   align-items: center;
 }
 
-.hostDashboard-vans-block>div>img {
+.hostDashboard-vans-frame>img {
   width: calc(5rem + 5vw);
   border-radius: 10px;
 }
@@ -670,7 +673,7 @@ a.active-link {
   color: gray;
 }
 
-.hostDashboard-vans-block>a {
+.hostDashboard-vans-view {
   font-weight: 500;
   font-size: calc(0.5rem + 0.5vw);
 }

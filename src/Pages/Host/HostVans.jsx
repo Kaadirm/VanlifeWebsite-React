@@ -22,7 +22,7 @@ function Vans() {
   <div className='hostVans-container'>
     <h2 className='hostVans-header'>Your listed vans</h2>
     {hostVans.map(item => 
-      <div className='hostVans-van-block'>
+      <div key={item.id} className='hostVans-van-block'>
         <NavLink to={item.id}
         className={({isActive}) => isActive ? "active-link" : ""}
         >
