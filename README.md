@@ -12,7 +12,7 @@ https://github.com/Kaadirm/VanlifeWebsite-React/assets/141996672/e072b5bd-b2bc-4
   - [Technology Used](#technology-used)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Folder Structure](#folder-structure)
+  - [Folder Structure](#src-folder-files-structure)
   - [Responsive Images](#images)
 
 ## Demo
