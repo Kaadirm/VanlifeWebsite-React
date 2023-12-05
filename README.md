@@ -1,4 +1,4 @@
-# Vanlife Website
+# VanlifeWebsite-React
 
 VanlifeWebsite-React is a web application built with React for renting and exploring Vans
 
